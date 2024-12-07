@@ -1,8 +1,16 @@
-CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
+cmake_minimum_required(VERSION 3.24)
 
-PROJECT(workspace)
-# set to version number of the latest release
-add_definitions("-DWS_VERSION=\"1.5.0\"")
+if(${CMAKE_VERSION} VERSION_GREATER_EQUAL 3.30)
+    cmake_policy(SET CMP0167 NEW)
+endif()
+
+project(workspace
+    VERSION 1.5.0
+    DESCRIPTION "workspace mechanism"
+    HOMEPAGE_URL "https://github.com/holgerBerger/hpc-workspace/"
+    LANGUAGES C CXX
+)
+add_definitions("-DWS_VERSION=\"${workspace_VERSION}\"")
 
 #workaround for old Redhat 6 cmake
 set(Boost_NO_BOOST_CMAKE ON)
