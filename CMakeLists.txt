@@ -157,9 +157,9 @@ ADD_EXECUTABLE(ws_restore ${workspace_SOURCE_DIR}/src/ws_restore.cpp
 							 ${workspace_SOURCE_DIR}/src/wsdb.cpp 
 							 ${workspace_SOURCE_DIR}/src/wsdb.h)
 
-TARGET_LINK_LIBRARIES( ws_allocate "-L ${LINKER_VAR}" ${Boost_LIBRARIES} ${LUA_LIBRARIES} ${CAP} yaml-cpp ${EXTRA_STATIC_LIBS})
-TARGET_LINK_LIBRARIES( ws_release "-L ${LINKER_VAR}" ${Boost_LIBRARIES} ${LUA_LIBRARIES} ${CAP} yaml-cpp ${EXTRA_STATIC_LIBS})
-TARGET_LINK_LIBRARIES( ws_restore "-L ${LINKER_VAR}" ${Boost_LIBRARIES} ${LUA_LIBRARIES} ${CAP} yaml-cpp ${TLIB} ${EXTRA_STATIC_LIBS})
+TARGET_LINK_LIBRARIES( ws_allocate "-L${LINKER_VAR}" ${Boost_LIBRARIES} ${LUA_LIBRARIES} ${CAP} yaml-cpp ${EXTRA_STATIC_LIBS})
+TARGET_LINK_LIBRARIES( ws_release "-L${LINKER_VAR}" ${Boost_LIBRARIES} ${LUA_LIBRARIES} ${CAP} yaml-cpp ${EXTRA_STATIC_LIBS})
+TARGET_LINK_LIBRARIES( ws_restore "-L${LINKER_VAR}" ${Boost_LIBRARIES} ${LUA_LIBRARIES} ${CAP} yaml-cpp ${TLIB} ${EXTRA_STATIC_LIBS})
 
 
 # Get install target
