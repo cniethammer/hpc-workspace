@@ -12,9 +12,6 @@ project(workspace
 )
 add_definitions("-DWS_VERSION=\"${workspace_VERSION}\"")
 
-#workaround for old Redhat 6 cmake
-set(Boost_NO_BOOST_CMAKE ON)
-
 message(STATUS "build type: " ${CMAKE_BUILD_TYPE})
 message(STATUS "use cmake -DCMAKE_BUILD_TYPE=debug for debug build")
 
