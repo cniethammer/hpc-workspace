@@ -94,18 +94,6 @@ ELSE (TERMINFO)
     SET(TLIB ${CURSES_LIBRARIES})
 ENDIF (TERMINFO)
 
-
-# find termcap for "are you human" checker
-#FIND_LIBRARY(TERMCAP NAMES libtermcap.so libtermcap.a)
-#IF (TERMCAP)
-    #MESSAGE("-- Found termcap")
-    #INCLUDE_DIRECTORIES(${TERMCAP_INCLUDE_DIRS})
-    #SET(LIBS ${LIBS} ${TERMCAP_LIBRARIES})
-#ELSE (TERMCAP)
-    #MESSAGE(FATAL_ERROR "-- No termcap, please get a termcap library!")
-#ENDIF (TERMCAP)
-
-
 FIND_LIBRARY(YAML libyaml-cpp.so)
 IF (YAML)
     MESSAGE("-- Found system YAML")
