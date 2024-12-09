@@ -129,17 +129,22 @@ target_sources(ws_release PRIVATE
     ${workspace_SOURCE_DIR}/src/wsdb.cpp
 )
 
+add_library(ruh STATIC)
+target_sources(ruh PRIVATE
+    ${workspace_SOURCE_DIR}/src/ruh.cpp
+)
+target_link_libraries(ruh PUBLIC ${TLIB})
+
 add_executable(ws_restore)
 target_sources(ws_restore PRIVATE
     ${workspace_SOURCE_DIR}/src/ws_restore.cpp
-    ${workspace_SOURCE_DIR}/src/ruh.cpp
     ${workspace_SOURCE_DIR}/src/ws.cpp
     ${workspace_SOURCE_DIR}/src/wsdb.cpp
 )
 
 TARGET_LINK_LIBRARIES( ws_allocate "-L${LINKER_VAR}" ${Boost_LIBRARIES} ${LUA_LIBRARIES} ${CAP} yaml-cpp ${EXTRA_STATIC_LIBS})
 TARGET_LINK_LIBRARIES( ws_release "-L${LINKER_VAR}" ${Boost_LIBRARIES} ${LUA_LIBRARIES} ${CAP} yaml-cpp ${EXTRA_STATIC_LIBS})
-TARGET_LINK_LIBRARIES( ws_restore "-L${LINKER_VAR}" ${Boost_LIBRARIES} ${LUA_LIBRARIES} ${CAP} yaml-cpp ${TLIB} ${EXTRA_STATIC_LIBS})
+TARGET_LINK_LIBRARIES( ws_restore "-L${LINKER_VAR}" ${Boost_LIBRARIES} ${LUA_LIBRARIES} ${CAP} yaml-cpp ruh ${EXTRA_STATIC_LIBS})
 
 
 # Get install target
