@@ -156,3 +156,5 @@ install (FILES sbin/ws_expirer sbin/ws_restore sbin/ws_validate_config DESTINATI
 INSTALL(FILES man/man1/ws_allocate.1 man/man1/ws_find.1 man/man1/ws_register.1
               man/man1/ws_restore.1 man/man1/ws_extend.1 man/man1/ws_list.1 man/man1/ws_release.1
               man/man1/ws_send_ical.1             DESTINATION share/man/man1)
+
+include(CPack)
