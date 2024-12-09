@@ -84,18 +84,19 @@ ELSE (TERMINFO)
     SET(TLIB ${CURSES_LIBRARIES})
 ENDIF (TERMINFO)
 
-FIND_LIBRARY(YAML libyaml-cpp.so)
-IF (YAML)
-    MESSAGE("-- Found system YAML")
-ELSE (YAML)
-    MESSAGE("-- No system YAML, building own YAML")
-	set(YAML_CPP_BUILD_TESTS OFF CACHE INTERNAL "" FORCE)
-	#ADD_SUBDIRECTORY(${workspace_SOURCE_DIR}/yaml-cpp-release-0.5.3)
-	#INCLUDE_DIRECTORIES(${workspace_SOURCE_DIR}/yaml-cpp-release-0.5.3/include)
-	ADD_SUBDIRECTORY(${workspace_SOURCE_DIR}/yaml-cpp-yaml-cpp-0.6.3/)
-    INCLUDE_DIRECTORIES(${workspace_SOURCE_DIR}/yaml-cpp-yaml-cpp-0.6.3//include)
-
-ENDIF (YAML)
+option(WS_USE_SYSTEM_YAML "look for system yaml-cpp installation instead of fetching source from github" ON)
+if(WS_USE_SYSTEM_YAML)
+    find_package(yaml-cpp REQUIRED)
+else()
+    include(FetchContent)
+    set(YAML_CPP_BUILD_TESTS OFF)
+    FetchContent_Declare(yaml-cpp
+        GIT_REPOSITORY "https://github.com/jbeder/yaml-cpp.git"
+        GIT_TAG "yaml-cpp-0.6.3"
+        GIT_SHALLOW FALSE  # ensure submodules are checked out
+    )
+    FetchContent_MakeAvailable(yaml-cpp)
+endif()
 
 get_directory_property(LINKER_VAR LINK_DIRECTORIES)
 message(STATUS "LINKER_VAR: ${LINKER_VAR}")
