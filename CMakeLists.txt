@@ -115,25 +115,27 @@ ENDIF ()
 SET (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${workspace_BINARY_DIR}/bin)
 
 
-ADD_EXECUTABLE(ws_allocate ${workspace_SOURCE_DIR}/src/ws_allocate.cpp 
-							 ${workspace_SOURCE_DIR}/src/ws.cpp 
-							 ${workspace_SOURCE_DIR}/src/ws.h
-							 ${workspace_SOURCE_DIR}/src/wsdb.cpp 
-							 ${workspace_SOURCE_DIR}/src/wsdb.h)
+add_executable(ws_allocate)
+target_sources(ws_allocate PRIVATE
+    ${workspace_SOURCE_DIR}/src/ws_allocate.cpp
+    ${workspace_SOURCE_DIR}/src/ws.cpp
+    ${workspace_SOURCE_DIR}/src/wsdb.cpp
+)
 
-ADD_EXECUTABLE(ws_release ${workspace_SOURCE_DIR}/src/ws_release.cpp 
-							 ${workspace_SOURCE_DIR}/src/ws.cpp 
-							 ${workspace_SOURCE_DIR}/src/ws.h
-							 ${workspace_SOURCE_DIR}/src/wsdb.cpp 
-							 ${workspace_SOURCE_DIR}/src/wsdb.h)
+add_executable(ws_release)
+target_sources(ws_release PRIVATE
+    ${workspace_SOURCE_DIR}/src/ws_release.cpp
+    ${workspace_SOURCE_DIR}/src/ws.cpp
+    ${workspace_SOURCE_DIR}/src/wsdb.cpp
+)
 
-ADD_EXECUTABLE(ws_restore ${workspace_SOURCE_DIR}/src/ws_restore.cpp 
-							 ${workspace_SOURCE_DIR}/src/ruh.cpp 
-							 ${workspace_SOURCE_DIR}/src/ruh.h
-							 ${workspace_SOURCE_DIR}/src/ws.cpp 
-							 ${workspace_SOURCE_DIR}/src/ws.h
-							 ${workspace_SOURCE_DIR}/src/wsdb.cpp 
-							 ${workspace_SOURCE_DIR}/src/wsdb.h)
+add_executable(ws_restore)
+target_sources(ws_restore PRIVATE
+    ${workspace_SOURCE_DIR}/src/ws_restore.cpp
+    ${workspace_SOURCE_DIR}/src/ruh.cpp
+    ${workspace_SOURCE_DIR}/src/ws.cpp
+    ${workspace_SOURCE_DIR}/src/wsdb.cpp
+)
 
 TARGET_LINK_LIBRARIES( ws_allocate "-L${LINKER_VAR}" ${Boost_LIBRARIES} ${LUA_LIBRARIES} ${CAP} yaml-cpp ${EXTRA_STATIC_LIBS})
 TARGET_LINK_LIBRARIES( ws_release "-L${LINKER_VAR}" ${Boost_LIBRARIES} ${LUA_LIBRARIES} ${CAP} yaml-cpp ${EXTRA_STATIC_LIBS})
